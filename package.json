@@ -2,7 +2,7 @@
   "name": "Legion Overlord",
   "version": "1.0.0",
   "description": "Legion Server's Sovereign Ruler",
-  "main": "bot.js".
+  "main": "bot.js",
   "author": "Gary tha Snail",
   "dependencies": {}
 }
