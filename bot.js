@@ -16,38 +16,7 @@ client.on("message", (message) => {
   	if (message.content.toLowerCase() === 'legion overlord') {
   		message.channel.send("I am here my subject. You may communicate with me using my currnt prefix, \"" + config.prefix + "\"");
   	}
-
-  	//Prefix Commands
-  	if (message.content.startsWith(config.prefix)) {
-    
-        const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-    	const command = args.shift().toLowerCase();
-
-    	switch (command) {
-    		case "ping" :  //ping command
-    			message.channel.send("Pong!")
-    			break;
-    		case "prefix" : //prefix command
-    			if (message.content.split(" ").slice(1,2)[0] !== undefined){
-					let newPrefix = message.content.split(" ").slice(1,2)[0];
-					config.prefix = newPrefix;
-					fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
-					message.channel.send("Prefix changed to " + newPrefix);
-					console.log("Prefix changed to " + newPrefix);
-				} else {
-					message.channel.send("No prefix defined");
-				}
-				break;
-			case "smite" : //smite command
-				message.channel.send("Smiting is not currently available.");
-				break;
-			case "unsmite" : //unsmite command
-				message.channel.send("Unsmiting is not currently available.");
-				break;
-		}	
-
-    }	
-  
+ 
   	//Word Filter
     const profanityLog = message.guild.channels.find('name', 'profanity_log');
     //Permutation list
@@ -133,6 +102,21 @@ client.on("message", (message) => {
                 }
             }
         }
+    }
+
+    //exception for if the message doesn't begin with the prefix
+    if (message.content.indexOf(config.prefix) !== 0) {
+        return;
+    }
+    //defines command and argumends
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+    //Command handler for running commands as individual files
+    try{
+        let commandFile = require(`./commands/${command}.js`);
+        commandFile.run(client, message, args, config);
+    } catch (err) {
+        console.error(err);
     }
 });
 
