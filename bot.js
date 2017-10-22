@@ -15,31 +15,32 @@ client.on("message", (message) => {
   	//Prefix Commands
   	if (message.content.startsWith(config.prefix)) {
     
-    	//Ping Command
-		if (message.content.startsWith(config.prefix + "ping")) {
-			message.channel.send("Pong!");
-		}
-    
-    	//Prefix-Setter Command
-		if (message.content.startsWith(config.prefix + "prefix")) {
-			if (message.content.split(" ").slice(1,2)[0] !== undefined){
-				let newPrefix = message.content.split(" ").slice(1,2)[0];
-				config.prefix = newPrefix;
-				fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
-				message.channel.send("Prefix changed to " + newPrefix);
-				console.log("Prefix changed to " + newPrefix);
-			} else {
-			message.channel.send("No prefix defined");
-			}
-		}
-    	
-    	//Smite Command
-    	if (message.content.startsWith(config.prefix + "smite")) {
-     		message.channel.send("Smiting is not currently available.");
-    	}
-    	if (message.content.startsWith(config.prefix + "unsmite")){
-    		message.channel.send("Unsmiting is not currently available.");
-    	}
+        const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    	const command = args.shift().toLowerCase();
+
+    	switch (command) {
+    		case "ping" :
+    			message.channel.send("Pong!")
+    			break;
+    		case "prefix" :
+    			if (message.content.split(" ").slice(1,2)[0] !== undefined){
+					let newPrefix = message.content.split(" ").slice(1,2)[0];
+					config.prefix = newPrefix;
+					fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
+					message.channel.send("Prefix changed to " + newPrefix);
+					console.log("Prefix changed to " + newPrefix);
+				} else {
+					message.channel.send("No prefix defined");
+				}
+				break;
+			case "smite" :
+				message.channel.send("Smiting is not currently available.");
+				break;
+			case "unsmite" :
+				message.channel.send("Unsmiting is not currently available.");
+				break;
+		}	
+
     }	
   
   		//Word Filter
