@@ -21,8 +21,8 @@ bot.on('ready', function (evt) {
     //Our bot needs to know if it will execute a command
     //It will listen for messages that  will start with '|'
     if (message.substring(0,1) == '|') {
-      vars args = message.substring(1).split(' ');
-      vars cmd = ars[0];
+      var args = message.substring(1).split(' ');
+      var cmd = args[0];
       
       args = args.splice(1);
       switch(cmd) {
