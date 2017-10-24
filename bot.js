@@ -10,7 +10,7 @@ client.on("ready", (client) => {
 });
 
 client.on("message", (message) => {
-	if (message.author.bot) {
+if (message.author.bot) {
 		return;
 	} 
 
@@ -31,6 +31,20 @@ client.on("message", (message) => {
     if (message.content.indexOf(config.prefix) !== 0) {
         return;
     }
+    guildRoles = message.guild.roles.array();
+    for (i = 0; i < guildRoles.length; i++) {
+        if (guildRoles[i].name === 'VIPs') {
+            config.vipRole = guildRoles[i];
+            fs.writeFile("../config.json", JSON.stringify(config), (err) => console.error);
+        } else if (guildRoles[i].name === 'Moderators') {
+            config.modRole = guildRoles[i];
+            fs.writeFile("../config.json", JSON.stringify(config), (err) => console.error);
+        } else if (guildRoles[i].name === 'Admins') {
+            config.adminRole = guildRoles[i];
+            fs.writeFile("../config.json", JSON.stringify(config), (err) => console.error);
+        }
+    }
+
     //defines command and argumends
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();

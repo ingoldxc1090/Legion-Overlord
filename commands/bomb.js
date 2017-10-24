@@ -1,7 +1,14 @@
-exports.run = (client, message, args) => {
+const permissionLevel = require('../subfunctions/permissionLevel');
+exports.run = (client, message, args, config) =>
+{
+    if (!permissionLevelo.run(client, message, config, 3)) return;
     var connectedChannel;
     if (args.length < 1) {
         connectedChannel = message.member.voiceChannel;
+        if (connectedChannel == undefined) {
+            message.channel.send("You are not in a voice channel.");
+            return;
+        }
     } else {
         connectedChannel = message.mentions.members.first().voiceChannel;
     }
@@ -14,13 +21,13 @@ exports.run = (client, message, args) => {
             connectedUsers[connectedUsers.length] = arrayMembers[i];
         }
     }
-    for (i = 0; i< arrayChannels.length; i++) {
+    for (i = 0; i < arrayChannels.length; i++) {
         if (arrayChannels[i].type === 'voice') {
             voiceChannels[voiceChannels.length] = arrayChannels[i];
         }
     }
-    for (i = 0; i< connectedUsers.length; i++) {
-        var rand = Math.floor(Math.random()*voiceChannels.length);
+    for (i = 0; i < connectedUsers.length; i++) {
+        var rand = Math.floor(Math.random() * voiceChannels.length);
         if (voiceChannels[rand].id != connectedChannel && voiceChannels[rand].permissionsFor(connectedUsers[i]).has(0x00100000)) {
             connectedUsers[i].setVoiceChannel(voiceChannels[rand]);
             message.channel.send(`${connectedUsers[i]} was thrown to ${voiceChannels[rand]}`);
