@@ -1,6 +1,5 @@
-exports.run = (client, message) => {
+exports.run = (client, message, punishmentCounter) => {
     //Word Filter
-    const profanityLog = message.guild.channels.find('name', 'profanity_log');
     //Permutation list
     const arrayA = ["a", "@", "e"];
     const arrayE = ["e", "3"];
@@ -11,6 +10,7 @@ exports.run = (client, message) => {
     const arrayP = ["p", "q"];
     const arrayS = ["s", "$"];
     const arrayT = ["t","+"];
+    const evidence = message.content;
 
     //n****r
     for (i = 0; i < arrayI.length; i++) {
@@ -21,8 +21,14 @@ exports.run = (client, message) => {
                     if (message.content.toLowerCase().includes(wordyDurd)) {
                         message.delete();
                         console.log("Deleted\n\tOffense Type: n****r\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
-                        profanityLog.send("Deleted\n\tOffense Type: n* * * *r\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                         message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                        var reason = "Language - n* * * *r"
+                        try {
+                            let punish = require(`./punish.js`);
+                            punish.run(client, message, punishmentCounter, reason, evidence);
+                        } catch (err) {
+                            console.error(err);
+                        }
                         return;
                     }
                 }
@@ -37,13 +43,19 @@ exports.run = (client, message) => {
                 for (l = 0; l < arrayG.length; l++) {
                     for (m = 0; m < arrayO.length; m++) {
                         for (n = 0; n < arrayT.length; n++) {
-                      	    var wordyDurd = arrayF[i] + arrayA[j] + arrayG[k] + arrayG[l] + arrayO[m] + arrayT[n];
+                            var wordyDurd = arrayF[i] + arrayA[j] + arrayG[k] + arrayG[l] + arrayO[m] + arrayT[n];
                             var wordyDurdShort = arrayF[i] + arrayA[j] + arrayG[k];
-              			    if (message.content.toLowerCase().includes(wordyDurd)) {
-                      		    message.delete();
-                        	    console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
-                                profanityLog.send("Deleted\n\tOffense Type: f* * * *t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
-                         	    message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                            if (message.content.toLowerCase().includes(wordyDurd)) {
+                                message.delete();
+                                console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
+                                message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                                var reason = "Language - f* * * *t"
+                                try {
+                                    let punish = require(`./punish.js`);
+                                    punish.run(client, message, punishmentCounter, reason, evidence);
+                                } catch (err) {
+                                    console.error(err);
+                                }
                                 return;
                             }
                         }
@@ -58,11 +70,17 @@ exports.run = (client, message) => {
         for (j = 0; j < arrayA.length; j++) {
             for (k = 0; k < arrayG.length; k++) {
                 var wordyDurd = arrayF[i] + arrayA[j] + arrayG[k];
-                if (message.content.toLowerCase().includes(wordyDurd) && message.content.charAt(message.content.search(wordyDurdShort)-1) !== " ") {
+                if (message.content.toLowerCase().includes(wordyDurd) && message.content.charAt(message.content.search(wordyDurd)-1) !== ' ') {
                     message.delete();
                     console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
-                    profanityLog.send("Deleted\n\tOffense Type: f* * * *t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                     message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                    var reason = "Language - f*g"
+                    try {
+                        let punish = require(`./punish.js`);
+                        punish.run(client, message, punishmentCounter, reason, evidence);
+                    } catch (err) {
+                        console.error(err);
+                    }
                     return;
                 }
             }
@@ -75,11 +93,17 @@ exports.run = (client, message) => {
             for (k = 0; k < arrayS.length; k++) {
                 var wordyDurd = arrayP[i] + "u" + arrayS[j] + arrayS[k] + "y";
                 var wordyDurdShort = arrayP[i] + "u" + arrayS[j] + arrayS[k];
-                if (message.content.toLowerCase().includes(wordyDurd) || (message.content.toLowerCase().includes(wordyDurdShort) && message.content.charAt(message.content.search(wordyDurdShort)-1) !== " ")) {
+                if (message.content.toLowerCase().includes(wordyDurd) || (message.content.toLowerCase().includes(wordyDurdShort) && message.content.charAt(message.content.search(wordyDurdShort)-1) !== ' ')) {
                     message.delete();
                     console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
-                    profanityLog.send("Deleted\n\tOffense Type: p* * *y\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                     message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                    var reason = "Language - p* * *y"
+                    try {
+                        let punish = require(`./punish.js`);
+                        punish.run(client, message, punishmentCounter, reason, evidence);
+                    } catch (err) {
+                        console.error(err);
+                    }
                     return;
                 }
             }

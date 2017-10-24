@@ -3,6 +3,8 @@ const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs");
 
+var punishmentCounter = [["user", 0, 0, 0]];
+
 client.on("ready", () => {
   console.log("Client started");
 });
@@ -14,13 +16,13 @@ client.on("message", (message) => {
 
 	//Legion Overlord Command
   	if (message.content.toLowerCase() === 'legion overlord') {
-  		message.channel.send("I am here my subject. You may communicate with me using my currnt prefix, \"" + config.prefix + "\"");
+  		message.channel.send("I am here my subject. You may communicate with me using my current prefix, \"" + config.prefix + "\"");
   	}
 
     //Chat Filter
     try {
         let chatFilter = require(`./filter/chatFilter.js`);
-        chatFilter.run(client, message);
+        chatFilter.run(client, message, punishmentCounter);
     } catch (err) {
         console.error(err);
     }
