@@ -5,7 +5,7 @@ const fs = require("fs");
 
 var punishmentCounter = [["user", 0, 0, 0]];
 
-client.on("ready", () => {
+client.on("ready", (client) => {
   console.log("Client started");
 });
 

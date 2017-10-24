@@ -14,5 +14,5 @@ exports.run = (client, message) => {
 		.addField("Member Count", message.guild.memberCount)
 		.addField("Humans", humanCount)
 		.addField("Bots", botCount);
-	message.channel.send({embed});
+	message.channel.send(embed);
 }

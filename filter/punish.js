@@ -1,6 +1,6 @@
 const fs = require("fs");
 const Discord = require("discord.js");
-const punishment = require("../punishment.json")
+//const punishment = require("../punishment.json");
 exports.run = (client, message, punishmentCounter, reason, evidence) => {
   var punishment;
   var userTitle;
@@ -36,25 +36,25 @@ exports.run = (client, message, punishmentCounter, reason, evidence) => {
             punishment = "User Kicked";
             userTitle = "Kick Noticiation";
             userDesc `You're lucky we don't have a kick command yet.\nThis is kick #${punishmentCounter[z][3]} of 3.\n3 kicks will result in a ban.`;
-            //color = ;
+            color = ff0000;
             //kickCommand here  >>>> <<<<
           }
         } else {
           punishment = "User Muted";
           userTitle = "Mute Notification";
           userDesc = `You're lucky we don't have a mute command yet.\nThis is mute #${punishmentCounter[z][2]} of 5.\n5 mutes will result in a kick.`;
-          //color = ;
+          //color = ff7f00;
           //muteCommand here  >>>> <<<<
         }
       } else {
         punishment = "User Infracted";
         userTitle = "Infraction Noficication";
         userDesc = `You have received **${punishmentCounter[z][1]}/3** infractions.\n3 will result in a temporary mute and a step towards the next punishment.`;
-        //color = ;
+        color = ffff00;
       }
       const DMembed = new Discord.RichEmbed()
         .setTitle(userTitle)
-        //.setColor(color)
+        .setColor(color)
         .setDescription(userDesc)
         .addField("Reason", reason)
         .addField("Evidence", evidence)
@@ -64,7 +64,7 @@ exports.run = (client, message, punishmentCounter, reason, evidence) => {
       const logEmbed = new Discord.Richembed()
         .setTitle(punishment)
         .setDescription(message.author)
-        //.setColor(color);
+        .setColor(color);
         .addField("Reason", reason)
         .addField("Evidence", evidence)
         .setTimestamp();
@@ -77,10 +77,10 @@ exports.run = (client, message, punishmentCounter, reason, evidence) => {
   punishment = "User Infracted"
   userTitle = "Infraction Notification";
   userDesc = `You have received **${punishmentCounter[z][1]}/3** infractions.\n3 will result in a temporary mute and a step towards the next punishment.`;
-  //color = ;
+  color = ;
   const DMembed = new Discord.RichEmbed()
     .setTitle(userTitle)
-    //.setColor(color)
+    .setColor(color)
     .setDescription(userDesc)
     .addField("Reason", reason)
     .addField("Evidence", evidence)
@@ -90,7 +90,7 @@ exports.run = (client, message, punishmentCounter, reason, evidence) => {
   const logEmbed = new Discord.RichEmbed()
     .setTitle(punishment)
     .setDescription(message.author)
-    //.setColor(color);
+    .setColor(color);
     .addField("Reason", reason)
     .addField("Evidence", evidence)
     .setTimestamp();
