@@ -31,7 +31,7 @@ exports.run = (client, message, args) =>
         message.reply(roastArray[i]);
     } else if (args[0] === 'add') {
         roastArray[roastArray.length] = args.shift().join(' ');
-    } else if (args[0] === 'them') {
+    } else if (message.mentions.users.first() !== null) {
         let member = message.mentions.users.first();
         message.channel.send(member + " " + roastArray[i]);
     } else if (args[0] === 'remove') {
