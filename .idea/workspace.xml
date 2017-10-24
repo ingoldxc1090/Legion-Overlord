@@ -32,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="avatar.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="avatar.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/commands/avatar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+            <state relative-caret-position="153">
+              <caret line="9" column="40" lean-forward="true" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -52,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bomb.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bomb.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/commands/bomb.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="65" lean-forward="false" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+            <state relative-caret-position="357">
+              <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="29" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -77,16 +77,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
               <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="punish.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/filter/punish.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="46" column="39" lean-forward="false" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -134,8 +124,10 @@
         <option value="$PROJECT_DIR$/filter/punish.js" />
         <option value="$PROJECT_DIR$/commands/members.js" />
         <option value="$PROJECT_DIR$/commands/dmme.js" />
-        <option value="$PROJECT_DIR$/commands/avatar.js" />
         <option value="$PROJECT_DIR$/commands/bomb.js" />
+        <option value="$PROJECT_DIR$/commands/avatar.js" />
+        <option value="$PROJECT_DIR$/commands/connect.js" />
+        <option value="$PROJECT_DIR$/commands/kickme.js" />
       </list>
     </option>
   </component>
@@ -155,8 +147,8 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-7" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1713" />
     <option name="width" value="1734" />
     <option name="height" value="1407" />
   </component>
@@ -256,17 +248,18 @@
       <option name="presentableId" value="Default" />
       <updated>1508804992748</updated>
       <workItem from="1508804994594" duration="969000" />
-      <workItem from="1508805994935" duration="10352000" />
+      <workItem from="1508805994935" duration="14243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11321000" />
+    <option name="totallyTimeSpent" value="15212000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1734" height="1407" extended-state="1" />
+    <frame x="1713" y="0" width="1734" height="1407" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20400943" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20400943" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288854" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -368,18 +361,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commands/avatar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bot.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/bomb.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="29" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -392,10 +385,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commands/bomb.js">
+    <entry file="file://$PROJECT_DIR$/commands/kickme.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="65" lean-forward="false" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/avatar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="40" lean-forward="true" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
           <folding />
         </state>
       </provider>
