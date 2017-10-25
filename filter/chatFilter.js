@@ -8,8 +8,11 @@ exports.run = (client, message, punishmentCounter) => {
     const arrayI = ["i", "1", "|"];
     const arrayO = ["o", "0", "e", "3", "i", "a", "@"];
     const arrayP = ["p", "q"];
+    const arrayQ = ["q", "p", "g,", "c"];
+    const arrayR = ["r", "®"];
     const arrayS = ["s", "$"];
     const arrayT = ["t","+"];
+    const arrayU = ["u", "w", "μ", "v"];
     const evidence = message.content;
 
     //n****r
@@ -22,7 +25,7 @@ exports.run = (client, message, punishmentCounter) => {
                         message.delete();
                         console.log("Deleted\n\tOffense Type: n****r\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                         message.channel.send(message.author + " thou shalt not use such vile language!!!");
-                        var reason = "Language - n* * * *r"
+                        var reason = "Language - n * * * * r";
                         try {
                             let punish = require(`./punish.js`);
                             punish.run(client, message, punishmentCounter, reason, evidence);
@@ -49,7 +52,7 @@ exports.run = (client, message, punishmentCounter) => {
                                 message.delete();
                                 console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                                 message.channel.send(message.author + " thou shalt not use such vile language!!!");
-                                var reason = "Language - f* * * *t"
+                                var reason = "Language - f * * * * t";
                                 try {
                                     let punish = require(`./punish.js`);
                                     punish.run(client, message, punishmentCounter, reason, evidence);
@@ -74,7 +77,7 @@ exports.run = (client, message, punishmentCounter) => {
                     message.delete();
                     console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                     message.channel.send(message.author + " thou shalt not use such vile language!!!");
-                    var reason = "Language - f*g"
+                    var reason = "Language - f*g";
                     try {
                         let punish = require(`./punish.js`);
                         punish.run(client, message, punishmentCounter, reason, evidence);
@@ -97,7 +100,7 @@ exports.run = (client, message, punishmentCounter) => {
                     message.delete();
                     console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                     message.channel.send(message.author + " thou shalt not use such vile language!!!");
-                    var reason = "Language - p* * *y"
+                    var reason = "Language - p * * * y";
                     try {
                         let punish = require(`./punish.js`);
                         punish.run(client, message, punishmentCounter, reason, evidence);
@@ -105,6 +108,31 @@ exports.run = (client, message, punishmentCounter) => {
                         console.error(err);
                     }
                     return;
+                }
+            }
+        }
+    }
+
+    //q*eer
+    for (i = 0; i < arrayQ.length; i++){
+        for (j = 0; j < arrayU.length; j++){
+            for (k = 0; k < arrayE.length; k++){
+                for (l = 0; l < arrayE.length; l++){
+                    for (m = 0; m < arrayR.length; m++){
+                        var wordyDurd = arrayQ[i] + arrayU[j] + arrayE[k] + arrayE[l] + arrayR[m];
+                        if (message.content.toLowerCase().includes(wordyDurd) || (message.content.toLowerCase().includes(wordyDurdShort) && message.content.charAt(message.content.search(wordyDurdShort)-1) !== ' ')) {
+                            message.delete();
+                            console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
+                            message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                            var reason = "Language - q * * * r";
+                            try {
+                                let punish = require(`./punish.js`);
+                                punish.run(client, message, punishmentCounter, reason, evidence);
+                            } catch (err) {
+                                console.error(err);
+                            }
+                            return;
+                    }
                 }
             }
         }
