@@ -64,7 +64,7 @@ exports.run = (client, message, punishmentCounter, reason, evidence) => {
       const logEmbed = new Discord.Richembed()
         .setTitle(punishment)
         .setDescription(message.author)
-        .setColor(color);
+        .setColor(color)
         .addField("Reason", reason)
         .addField("Evidence", evidence)
         .setTimestamp();

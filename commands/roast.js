@@ -13,7 +13,6 @@ exports.run = (client, message, args) =>
         "Someday you'll go far... and I hope you stay there.",
         "Save your breath - you'll need it to blow up your date.",
         "I thought of you today. It reminded me to take the garbage out.",
-        "I thought of you today. It reminded me to take the garbage out.",
         "With a face like yours, I wish I was blind.",
         "The only positive thing about you is your HIV status.",
         "Do you still love nature....despite what it did to you?",
