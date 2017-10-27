@@ -7,6 +7,15 @@ client.on("ready", (client) => {
   console.log("Client started");
 });
 
+client.on("messageUpdate", (newMessage) => {
+    try {
+        let chatFilter = require(`./filter/chatFilter.js`);
+        chatFilter.run(client, newMessage);
+    } catch (err) {
+        console.error(err);
+    }
+});
+
 client.on("message", (message) => {
 if (message.author.bot) {
 		return;
