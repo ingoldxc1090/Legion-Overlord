@@ -7,7 +7,7 @@ client.on("ready", (client) => {
   console.log("Client started");
 });
 
-client.on("messageUpdate", (newMessage) => {
+client.on("messageUpdate", (oldMessage, newMessage) => {
     try {
         let chatFilter = require(`./filter/chatFilter.js`);
         chatFilter.run(client, newMessage);
