@@ -3,14 +3,14 @@ const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs");
 
-client.on("ready", (client) => {
-    console.log("Client started");
+client.on("ready", () => {
     try {
         let status = require('./subfunctions/status.js');
         status.run(client);
     } catch (err) {
-        console.err(err);
+        console.error(err);
     }
+    console.log("Client started");
 });
 
 client.on("messageUpdate", (oldMessage, newMessage) => {

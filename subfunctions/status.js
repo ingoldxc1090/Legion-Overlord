@@ -4,5 +4,5 @@ exports.run = (client) => {
                     "with fire"];
     rand = Math.floor(Math.random() * status.length);
     statusSet = status[rand];
-    client.user.setPresence(statusSet);
+    client.user.setGame(statusSet);
 }
