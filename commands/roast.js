@@ -1,4 +1,5 @@
-exports.run = (client, message, args) =>
+const permissionLevel = require('../subfunctions/permissionLevel.js');
+exports.run = (client, message, args, config) =>
 //just add any new roasts into the array in quotes please
 {
     var roastArray = ["Fuck you",
@@ -29,21 +30,24 @@ exports.run = (client, message, args) =>
     } else if (args[0] === 'me') {
         message.reply(roastArray[i]);
     } else if (args[0] === 'add') {
-        roastArray[roastArray.length] = args.shift().join(' ');
+        if(permissionLevel.run(client, message, 3)) {
+            roastArray[roastArray.length] = args.shift().join(' ');
+        }
     } else if (message.mentions.users.first() !== null) {
         let member = message.mentions.users.first();
         message.channel.send(member + " " + roastArray[i]);
     } else if (args[0] === 'remove') {
-        for (j = 0; j < roastArray.length; j++) {
-            if (roastArray[j].contains(args.shift().join(' '))) {
-                delete roastArray[j];
-            } else {
-                message.channel.send("I cannot find that roast.");
+        if(permissionLevel.run(client, message, 3)) {
+            for (j = 0; j < roastArray.length; j++) {
+                if (roastArray[j].contains(args.shift().join(' '))) {
+                    delete roastArray[j];
+                } else {
+                    message.channel.send("I cannot find that roast.");
+                }
+
             }
-
         }
-
     } else {
-        message.channel.send("Unexpected Argument. Acceptable arguments are \"me\", \"them @user\", \"add {roast}\", and \"remove {roast}\" or use no argument for an epic roast.")
+        message.channel.send("Unexpected Argument. Acceptable arguments are \"me\", \"@user\", \"add {roast}\", and \"remove {roast}\" or use no argument for an epic roast.")
     }
 }

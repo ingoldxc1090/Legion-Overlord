@@ -1,7 +1,7 @@
 const permissionLevel = require('../subfunctions/permissionLevel');
 const fs = require("fs");
-exports.run = (client, message, args, config) => {
-    if(permissionLevel.run(client, message, config, 3)) {
+exports.run = (client, message, args) => {
+    if(permissionLevel.run(client, message, 3)) {
         var connectedChannel;
         //Checks for arguments and returns errors if you or your target are not connected to a voice channel
         if (args.length < 1) {

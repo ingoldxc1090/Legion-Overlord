@@ -1,4 +1,5 @@
-exports.run = (client, message, config, level) =>
+const config = require('../config.json');
+exports.run = (client, message, level) =>
 {
     var userRoles = message.member.roles.array();
     var hasRole = false;
