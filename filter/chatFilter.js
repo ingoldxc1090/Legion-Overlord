@@ -1,4 +1,4 @@
-exports.run = (client, message, config) =>
+exports.run = (client, message) =>
 {
     //Word Filter
     //Permutation list
@@ -15,6 +15,7 @@ exports.run = (client, message, config) =>
     const arrayT = ["t", "+"];
     const arrayU = ["u", "w", "μ", "v"];
     const evidence = message.content;
+    const user = "**" + message.author.id + "*";
 
     //n****r
     for (i = 0; i < arrayI.length; i++) {
@@ -27,10 +28,10 @@ exports.run = (client, message, config) =>
                         console.log("Deleted\n\tOffense Type: n****r\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                         message.channel.send(message.author + " thou shalt not use such vile language!!!");
                         var reason = "Language";
-                        var args = [message.author, reason, evidence];
+                        var args = [user, reason, evidence];
                         try {
                             let warn = require(`../commands/warn.js`);
-                            warn.run(client, message, args, config, true);
+                            warn.run(client, message, args, true);
                         } catch (err) {
                             console.error(err);
                         }
@@ -55,10 +56,10 @@ exports.run = (client, message, config) =>
                                 console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                                 message.channel.send(message.author + " thou shalt not use such vile language!!!");
                                 var reason = "Language";
-                                var args = [message.author, reason, evidence];
+                                var args = [user, reason, evidence];
                                 try {
                                     let warn = require(`../commands/warn.js`);
-                                    warn.run(client, message, args, config, true);
+                                    warn.run(client, message, args, true);
                                 } catch (err) {
                                     console.error(err);
                                 }
@@ -81,10 +82,10 @@ exports.run = (client, message, config) =>
                     console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                     message.channel.send(message.author + " thou shalt not use such vile language!!!");
                     var reason = "Language";
-                    var args = [message.author, reason, evidence];
+                    var args = [user, reason, evidence];
                     try {
                         let warn = require(`../commands/warn.js`);
-                        warn.run(client, message, args, config, true);
+                        warn.run(client, message, args, true);
                     } catch (err) {
                         console.error(err);
                     }
@@ -105,10 +106,10 @@ exports.run = (client, message, config) =>
                     console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                     message.channel.send(message.author + " thou shalt not use such vile language!!!");
                     var reason = "Language";
-                    var args = [message.author, reason, evidence];
+                    var args = [user, reason, evidence];
                     try {
                         let warn = require(`../commands/warn.js`);
-                        warn.run(client, message, args, config, true);
+                        warn.run(client, message, args, true);
                     } catch (err) {
                         console.error(err);
                     }
@@ -119,7 +120,7 @@ exports.run = (client, message, config) =>
     }
 
     //q*eer
-/*    for (i = 0; i < arrayQ.length; i++) {
+    for (i = 0; i < arrayQ.length; i++) {
         for (j = 0; j < arrayU.length; j++) {
             for (k = 0; k < arrayE.length; k++) {
                 for (l = 0; l < arrayE.length; l++) {
@@ -130,10 +131,10 @@ exports.run = (client, message, config) =>
                             console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                             message.channel.send(message.author + " thou shalt not use such vile language!!!");
                             var reason = "Language";
-                            var args = [message.author, reason, evidence];
+                            var args = [user, reason, evidence];
                             try {
                                 let warn = require(`../commands/warn.js`);
-                                warn.run(client, message, args, config, true);
+                                warn.run(client, message, args, true);
                             } catch (err) {
                                 console.error(err);
                             }
@@ -144,5 +145,4 @@ exports.run = (client, message, config) =>
             }
         }
     }
-    */
 }

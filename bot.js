@@ -20,7 +20,7 @@ if (message.author.bot) {
     //Chat Filter
     try {
         let chatFilter = require(`./filter/chatFilter.js`);
-        chatFilter.run(client, message, config);
+        chatFilter.run(client, message);
     } catch (err) {
         console.error(err);
     }

@@ -2,25 +2,43 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const punishment = require('./commandData/punishment.json');
 const permissionLevel = require('../subfunctions/permissionLevel');
-exports.run = (client, message, args, config, chatFilter) => {
-    if(chatFilter == undefined) chatFilter = false;
-    if(permissionLevel.run(client, message, config, 2) || chatFilter) {
+exports.run = (client, message, args, chatFilter) => {
+    if(chatFilter || permissionLevel.run(client, message, config, 2)) {
         var serverMembers = message.guild.members.array();
+        if(args[0] == undefined) {
+            message.channel.send("You must mention a user.")
+            return;
+        }
         var user;
         for(i = 0; i < serverMembers.length; i++) {
             if(serverMembers[i].user.id === args[0].substr(2).slice(0,-1)) {
                 user = serverMembers[i].user;
             }
         }
+        if(user == undefined) {
+            user = message.mentions.users.first();
+            if(user == undefined) {
+                message.channel.send("You must mention a user.")
+                return;
+            }
+        }
         var reason = args[1];
         delete args[0];
         delete args[1];
         var evidence = args.join(' ');
+        if(reason == undefined) {
+            message.channel.send("You must provide a reason for your warning.")
+            return;
+        }
+        if(evidence === ' ') {
+            message.channel.send("You must provide evidence for your warning.")
+            return;
+        }
         const moderationLog = message.guild.channels.find('name', 'moderation_log');
         for(i = 0; i < punishment.offenders.length; i++) {
             if(user.id == punishment.offenders[i]) {
                 punishment.warnCount[i]++;
-                if(punishment.warnCount[i] > 3) {
+                if(punishment.warnCount[i] >= 3) {
                     let mute = require('./mute.js');
                     //mute.run(client, message, args, config);
                     punishment.warnCount[i] = 0;
@@ -62,7 +80,6 @@ exports.run = (client, message, args, config, chatFilter) => {
             .addField("Evidence", evidence)
             .setTimestamp()
             .setFooter("Contact an admin if you feel you have been wrongfully punished");
-        console.log(user);
         user.send(DMembed);
         const logEmbed = new Discord.RichEmbed()
             .setTitle("User Warned")
