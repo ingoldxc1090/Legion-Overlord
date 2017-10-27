@@ -1,4 +1,4 @@
-exports.run = (client, message, punishmentCounter) =>
+exports.run = (client, message, config) =>
 {
     //Word Filter
     //Permutation list
@@ -26,10 +26,11 @@ exports.run = (client, message, punishmentCounter) =>
                         message.delete();
                         console.log("Deleted\n\tOffense Type: n****r\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                         message.channel.send(message.author + " thou shalt not use such vile language!!!");
-                        var reason = "Language - n * * * * r";
+                        var reason = "Language";
+                        var args = [message.author, reason, evidence];
                         try {
-                            let punish = require(`./punish.js`);
-                            punish.run(client, message, punishmentCounter, reason, evidence);
+                            let warn = require(`../commands/warn.js`);
+                            warn.run(client, message, args, config, true);
                         } catch (err) {
                             console.error(err);
                         }
@@ -53,10 +54,11 @@ exports.run = (client, message, punishmentCounter) =>
                                 message.delete();
                                 console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                                 message.channel.send(message.author + " thou shalt not use such vile language!!!");
-                                var reason = "Language - f * * * * t";
+                                var reason = "Language";
+                                var args = [message.author, reason, evidence];
                                 try {
-                                    let punish = require(`./punish.js`);
-                                    punish.run(client, message, punishmentCounter, reason, evidence);
+                                    let warn = require(`../commands/warn.js`);
+                                    warn.run(client, message, args, config, true);
                                 } catch (err) {
                                     console.error(err);
                                 }
@@ -78,10 +80,11 @@ exports.run = (client, message, punishmentCounter) =>
                     message.delete();
                     console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                     message.channel.send(message.author + " thou shalt not use such vile language!!!");
-                    var reason = "Language - f*g";
+                    var reason = "Language";
+                    var args = [message.author, reason, evidence];
                     try {
-                        let punish = require(`./punish.js`);
-                        punish.run(client, message, punishmentCounter, reason, evidence);
+                        let warn = require(`../commands/warn.js`);
+                        warn.run(client, message, args, config, true);
                     } catch (err) {
                         console.error(err);
                     }
@@ -101,10 +104,11 @@ exports.run = (client, message, punishmentCounter) =>
                     message.delete();
                     console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                     message.channel.send(message.author + " thou shalt not use such vile language!!!");
-                    var reason = "Language - p * * * y";
+                    var reason = "Language";
+                    var args = [message.author, reason, evidence];
                     try {
-                        let punish = require(`./punish.js`);
-                        punish.run(client, message, punishmentCounter, reason, evidence);
+                        let warn = require(`../commands/warn.js`);
+                        warn.run(client, message, args, config, true);
                     } catch (err) {
                         console.error(err);
                     }
@@ -125,10 +129,11 @@ exports.run = (client, message, punishmentCounter) =>
                             message.delete();
                             console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
                             message.channel.send(message.author + " thou shalt not use such vile language!!!");
-                            var reason = "Language - q * * * r";
+                            var reason = "Language";
+                            var args = [message.author, reason, evidence];
                             try {
-                                let punish = require(`./punish.js`);
-                                punish.run(client, message, punishmentCounter, reason, evidence);
+                                let warn = require(`../commands/warn.js`);
+                                warn.run(client, message, args, config, true);
                             } catch (err) {
                                 console.error(err);
                             }

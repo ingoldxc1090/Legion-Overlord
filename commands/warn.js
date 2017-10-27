@@ -2,8 +2,9 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const punishment = require('./commandData/punishment.json');
 const permissionLevel = require('../subfunctions/permissionLevel');
-exports.run = (client, message, args, config) => {
-    if(permissionLevel.run(client, message, config, 2)) {
+exports.run = (client, message, args, config, chatFilter) => {
+    if(chatFilter == undefined) chatFilter = false;
+    if(permissionLevel.run(client, message, config, 2) || chatFilter) {
         var serverMembers = message.guild.members.array();
         var user;
         for(i = 0; i < serverMembers.length; i++) {

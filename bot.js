@@ -3,8 +3,6 @@ const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs");
 
-var punishmentCounter = [["user", 0, 0, 0]];
-
 client.on("ready", (client) => {
   console.log("Client started");
 });
@@ -22,7 +20,7 @@ if (message.author.bot) {
     //Chat Filter
     try {
         let chatFilter = require(`./filter/chatFilter.js`);
-        chatFilter.run(client, message, punishmentCounter);
+        chatFilter.run(client, message, config);
     } catch (err) {
         console.error(err);
     }
