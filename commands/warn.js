@@ -23,9 +23,10 @@ exports.run = (client, message, args, chatFilter) => {
             }
         }
         var reason = args[1];
-        delete args[0];
-        delete args[1];
-        var evidence = args.join(' ');
+        var arguments = args;
+        delete arguments[0];
+        delete arguments[1];
+        var evidence = arguments.join(' ');
         if(reason == undefined) {
             message.channel.send("You must provide a reason for your warning.")
             return;
@@ -40,7 +41,7 @@ exports.run = (client, message, args, chatFilter) => {
                 punishment.warnCount[i]++;
                 if(punishment.warnCount[i] >= 3) {
                     let mute = require('./mute.js');
-                    //mute.run(client, message, args, config);
+                    mute.run(client, message, args, config, chatFilter);
                     punishment.warnCount[i] = 0;
                     fs.writeFile("./commandData/bomb.json", JSON.stringify(punishment), (err) => console.error);
                     return;
@@ -48,8 +49,8 @@ exports.run = (client, message, args, chatFilter) => {
                     fs.writeFile("./commandData/bomb.json", JSON.stringify(punishment), (err) => console.error);
                     const DMembed = new Discord.RichEmbed()
                         .setTitle("Warning Notification")
-                        .setColor(0xff7f00)
-                        .setDescription(`You have received **${punishment.warnCount[i]}/3** infractions.\n3 will result in a temporary mute and a step towards the next punishment.`)
+                        .setColor(0xccff00)
+                        .setDescription(`You have received **${punishment.warnCount[i]}/3** warnings.\n3 will result in a temporary mute and a step towards the next punishment.`)
                         .addField("Reason", reason)
                         .addField("Evidence", evidence)
                         .setTimestamp()
@@ -58,7 +59,7 @@ exports.run = (client, message, args, chatFilter) => {
                     const logEmbed = new Discord.RichEmbed()
                         .setTitle("User Warned")
                         .setDescription(user)
-                        .setColor(0xff7f00)
+                        .setColor(0xccff00)
                         .addField("Reason", reason)
                         .addField("Evidence", evidence)
                         .setTimestamp();
@@ -74,8 +75,8 @@ exports.run = (client, message, args, chatFilter) => {
         fs.writeFile("./commandData/punishment.json", JSON.stringify(punishment), (err) => console.error);
         const DMembed = new Discord.RichEmbed()
             .setTitle("Warning Notification")
-            .setColor(0xff7f00)
-            .setDescription(`You have received **1/3** infractions.\n3 will result in a temporary mute and a step towards the next punishment.`)
+            .setColor(0xccff00)
+            .setDescription(`You have received **1/3** warnings.\n3 will result in a temporary mute and a step towards the next punishment.`)
             .addField("Reason", reason)
             .addField("Evidence", evidence)
             .setTimestamp()
@@ -84,7 +85,7 @@ exports.run = (client, message, args, chatFilter) => {
         const logEmbed = new Discord.RichEmbed()
             .setTitle("User Warned")
             .setDescription(user)
-            .setColor(0xff7f00)
+            .setColor(0xccff00)
             .addField("Reason", reason)
             .addField("Evidence", evidence)
             .setTimestamp();
