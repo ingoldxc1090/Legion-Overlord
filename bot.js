@@ -4,7 +4,13 @@ const config = require("./config.json");
 const fs = require("fs");
 
 client.on("ready", (client) => {
-  console.log("Client started");
+    console.log("Client started");
+    try {
+        let status = require('./subfunctions/status.js');
+        status.run(client);
+    } catch (err) {
+        console.err(err);
+    }
 });
 
 client.on("messageUpdate", (oldMessage, newMessage) => {
