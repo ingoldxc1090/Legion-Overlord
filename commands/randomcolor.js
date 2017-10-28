@@ -9,7 +9,7 @@ exports.run = (client, message) => {
     const embed = new Discord.RichEmbed()
         .setTitle("Random Color")
         .setColor(randR*randG*randB)
-        .addField("Hex": `${hexR}${hexG}${hexB}`)
-        .addField("Decimal": `${randR},${randG},${randB}`);
+        .addField("Hex", `${hexR}${hexG}${hexB}`)
+        .addField("Decimal", `${randR},${randG},${randB}`);
     message.channel.send(embed);
 }
