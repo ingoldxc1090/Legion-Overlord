@@ -2,8 +2,10 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const punishment = require('./commandData/punishment.json');
 const permissionLevel = require('../subfunctions/permissionLevel.js');
+const checkRoles = require('../subfunctions/checkRoles.js');
 exports.run = (client, message, args, chatFilter) => {
-    if(chatFilter || (permissionLevel.run(client, message, 3) && (checkRoles.run(client, message)))) {
+    if(chatFilter == undefined) chatfilter = false;
+    if(chatFilter || (permissionLevel.run(client, message, 3) && checkRoles.run(client, message))) {
         var serverMembers = message.guild.members.array();
         if(args[0] == undefined) {
             message.channel.send("You must mention a user.")
