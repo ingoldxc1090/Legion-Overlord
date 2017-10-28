@@ -30,11 +30,11 @@ exports.run = (client, message, args, chatFilter) => {
         delete arguments[1];
         var evidence = arguments.join(' ');
         if(reason == undefined) {
-            message.channel.send("You must provide a reason for muting this user.")
+            message.channel.send("You must provide a reason for kicking this user.")
             return;
         }
         if(evidence === ' ') {
-            message.channel.send("You must provide evidence for muting this user.")
+            message.channel.send("You must provide evidence for kicking this user.")
             return;
         }
         const moderationLog = message.guild.channels.find('name', 'moderation_log');
