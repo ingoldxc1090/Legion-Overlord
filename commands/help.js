@@ -7,5 +7,5 @@ exports.run = (client, message) => {
         .setTitle("Legion Overlord Commands")
         .addField("General", genCommands)
         .addField("Moderation", modCommands);
-    message.author.sent(embed);
+    message.author.send(embed);
 }
