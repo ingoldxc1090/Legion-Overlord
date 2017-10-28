@@ -1,4 +1,5 @@
 const permissionLevel = require('../subfunctions/permissionLevel.js');
+const Discord = require("discord.js");
 const config = require('../config.json');
 exports.run = (client, message, args, config) => {
     if(args[0] === "help") {
