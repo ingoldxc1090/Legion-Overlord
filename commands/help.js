@@ -6,6 +6,7 @@ exports.run = (client, message) => {
     const utilCommands = `${config.prefix}prefix`
     const embed = new Discord.RichEmbed()
         .setTitle("Legion Overlord Commands")
+        .setColor(0xffdf00)
         .addField("General", genCommands)
         .addField("Moderation", modCommands)
         .addField("Utilities", utilCommands);
