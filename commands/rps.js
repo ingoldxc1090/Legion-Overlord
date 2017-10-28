@@ -1,7 +1,7 @@
 exports.run = (client, message, args) => {
     var rps = ["rock", "paper", "scissors"];
     var rand = Math.floor(Math.random()*3);
-    if(args[0] !== "rock" || args[0] !== "paper" || args[0] !== "scissors" || args[0] !== "gun") {
+    if(args[0] !== "rock" && args[0] !== "paper" && args[0] !== "scissors" && args[0] !== "gun") {
         message.channel.send("Invalid argument");
         return;
     }
