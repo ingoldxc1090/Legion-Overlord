@@ -1,5 +1,15 @@
+const config = require('../config.json');
 exports.run = (client, message, args) =>
 {
+    if(args[0] === "help") {
+        const help = new Discord.RichEmbed()
+            .setTitle("Avatar")
+            .setColor(0xffdf00)
+            .setDescription("Returns the avatar image of the sender or specified user.")
+            .addField("Usage", `${config.prefix}avatar\n${config.prefix}avatar @user`);
+        message.channel.send(help);
+        return;
+    }
     if (args.length < 1) {
         message.channel.send(message.author.avatarURL);
     } else {

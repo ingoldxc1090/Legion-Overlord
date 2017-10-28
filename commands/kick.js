@@ -3,7 +3,17 @@ const Discord = require("discord.js");
 const punishment = require('./commandData/punishment.json');
 const permissionLevel = require('../subfunctions/permissionLevel.js');
 const checkRoles = require('../subfunctions/checkRoles.js');
+const config = require('../config.json');
 exports.run = (client, message, args, chatFilter) => {
+    if(args[0] === "help") {
+        const help = new Discord.RichEmbed()
+            .setTitle("Kick")
+            .setColor(0xffdf00)
+            .setDescription("Kicks the specified user from the server.")
+            .addField("Usage", `${config.prefix}kick @user {reason} {evidence}`);
+        message.channel.send(help);
+        return;
+    }
     if(chatFilter == undefined) chatfilter = false;
     if(chatFilter || (permissionLevel.run(client, message, 2) && checkRoles.run(client, message))) {
         var serverMembers = message.guild.members.array();

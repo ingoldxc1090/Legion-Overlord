@@ -1,6 +1,16 @@
 const permissionLevel = require('../subfunctions/permissionLevel');
 const fs = require("fs");
+const config = require('../config.json');
 exports.run = (client, message, args) => {
+    if(args[0] === "help") {
+        const help = new Discord.RichEmbed()
+            .setTitle("Bomb")
+            .setColor(0xffdf00)
+            .setDescription("Places a bomb in the sender's voice channel or in the channel of a specified user. The bomb will detonate scattering users throughout the server")
+            .addField("Usage", `${config.prefix}bomb\n${config.prefix}bomb @user`);
+        message.channel.send(help);
+        return;
+    }
     if(permissionLevel.run(client, message, 3)) {
         var connectedChannel;
         //Checks for arguments and returns errors if you or your target are not connected to a voice channel
