@@ -1,4 +1,14 @@
+const config = require('../config.json');
 exports.run = (client, message, args) => {
+    if(args[0] === "help") {
+        const help = new Discord.RichEmbed()
+            .setTitle("Rock, Paper, Scissors")
+            .setColor(0xffdf00)
+            .setDescription("Plays a game of rock paper scissors.")
+            .addField("Usage", `${config.prefix}rps {throw}`);
+        message.channel.send(help);
+        return;
+    }
     var rps = ["rock", "paper", "scissors"];
     var rand = Math.floor(Math.random()*3);
     if(args[0] !== "rock" && args[0] !== "paper" && args[0] !== "scissors" && args[0] !== "gun") {

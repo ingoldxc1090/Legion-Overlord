@@ -1,5 +1,15 @@
 const Discord = require("discord.js");
-exports.run = (client, message) => {
+const config = reqiure('../config.json');
+exports.run = (client, message, args) => {
+    if(args[0] === "help") {
+        const help = new Discord.RichEmbed()
+            .setTitle("Members")
+            .setColor(0xffdf00)
+            .setDescription("Returns the member count of the server.")
+            .addField("Usage", `${config.prefix}members`);
+        message.channel.send(help);
+        return;
+    }
 	var arrayMembers = message.guild.members.array();
 	var botCount = 0;
 	var humanCount = 0;

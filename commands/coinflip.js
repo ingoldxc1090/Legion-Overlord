@@ -1,5 +1,5 @@
 const config = require('../config.json');
-exports.run = (client, message) => {
+exports.run = (client, message, args) => {
     if(args[0] === "help") {
             const help = new Discord.RichEmbed()
                 .setTitle("Coin Flip")

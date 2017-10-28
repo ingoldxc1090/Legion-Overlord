@@ -1,7 +1,15 @@
 const permissionLevel = require('../subfunctions/permissionLevel.js');
-exports.run = (client, message, args, config) =>
-//just add any new roasts into the array in quotes please
-{
+const config = require('../config.json');
+exports.run = (client, message, args, config) => {
+    if(args[0] === "help") {
+        const help = new Discord.RichEmbed()
+            .setTitle("Roast")
+            .setColor(0xffdf00)
+            .setDescription("Provides a roast, roasts you, or roasts a specified user with commands to add and remove roasts.")
+            .addField("Usage", `${config.prefix}roast\n${config.prefix}roast me\n${config.prefix}roast @user\n${config.prefix}roast add {roast}\n${config.prefix}roast remove {roast}`);
+        message.channel.send(help);
+        return;
+    }
     var roastArray = ["Fuck you",
         "Your mother was a whore and your father smelled of elderberries!",
         "Do your parents even realize they’re living proof that two wrongs don’t make a right?",
