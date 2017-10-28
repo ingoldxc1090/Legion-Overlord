@@ -22,7 +22,7 @@ exports.run = (client, message, level) =>
             }
         }
     } else {
-        console.err("No role level specified")
+        console.error("No role level specified")
     }
     if (hasRole) {
         return true;

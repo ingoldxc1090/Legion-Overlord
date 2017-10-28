@@ -64,7 +64,7 @@ if (message.author.bot) {
     //Command handler for running commands as individual files
     try{
         let commandFile = require(`./commands/${command}.js`);
-        commandFile.run(client, message, args, config);
+        commandFile.run(client, message, args);
     } catch (err) {
         console.error(err);
     }

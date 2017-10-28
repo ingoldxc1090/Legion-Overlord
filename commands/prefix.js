@@ -1,7 +1,8 @@
 const fs = require("fs");
+const config = require('../config.json')
 const permissionLevel = require('../subfunctions/permissionLevel.js');
-exports.run = (client, message, args, config) => {
-	if (!permissionLevel.run(client, message, config, 3)) return;
+exports.run = (client, message, args) => {
+	if (!permissionLevel.run(client, message, 3)) return;
 	if (message.content.split(" ").slice(1,2)[0] !== undefined){
 		let newPrefix = message.content.split(" ").slice(1,2)[0];
 		config.prefix = newPrefix;
