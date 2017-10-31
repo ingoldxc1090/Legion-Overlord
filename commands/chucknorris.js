@@ -9,7 +9,11 @@ exports.run = (client, message, args) => {
       });
 
       resp.on('end', () => {
-        message.channel.send(JSON.parse(data).value.joke);
+        var joke = JSON.parse(data).value.joke;
+        while(joke.includes("&quot;")){
+            joke = joke.replace("&quot;", "\"");
+        }
+        message.channel.send(joke);
       });
 
     })
