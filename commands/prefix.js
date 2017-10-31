@@ -1,5 +1,6 @@
 const fs = require("fs");
-const config = require('../config.json')
+const config = require('../config.json');
+const Discord = require("discord.js");
 const permissionLevel = require('../subfunctions/permissionLevel.js');
 exports.run = (client, message, args) => {
     if(args[0] === "help") {

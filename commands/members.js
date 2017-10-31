@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const config = reqiure('../config.json');
+const config = require('../config.json');
 exports.run = (client, message, args) => {
     if(args[0] === "help") {
         const help = new Discord.RichEmbed()
