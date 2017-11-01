@@ -30,8 +30,8 @@ exports.run = (client, message, args) => {
             const embed = new Discord.RichEmbed()
                 .setTitle(`The weather in ${JSON.parse(data).query.results.channel.location.city}, ${JSON.parse(data).query.results.channel.location.region}`)
                 .addField(`Current`, `Temperature: ${JSON.parse(data).query.results.channel.item.condition.temp}\xB0F\nCondition: ${JSON.parse(data).query.results.channel.item.condition.text}\nWind: ${JSON.parse(data).query.results.channel.wind.speed}mph ${windComp}`)
-                .addField(`Today`, `Condition: ${JSON.parse(data).query.results.channel.item.forecast[0].text}\nHigh: ${JSON.parse(data).query.results.channel.item.forecast[0].high}\nLow: ${JSON.parse(data).query.results.channel.item.forecast[0].low}`)
-                .addField(`Tomorrow`, `Condition: ${JSON.parse(data).query.results.channel.item.forecast[1].text}\nHigh: ${JSON.parse(data).query.results.channel.item.forecast[1].high}\nLow: ${JSON.parse(data).query.results.channel.item.forecast[1].low}`);
+                .addField(`Today`, `Condition: ${JSON.parse(data).query.results.channel.item.forecast[0].text}\nHigh: ${JSON.parse(data).query.results.channel.item.forecast[0].high}\xB0F\nLow: ${JSON.parse(data).query.results.channel.item.forecast[0].low}\xB0F`)
+                .addField(`Tomorrow`, `Condition: ${JSON.parse(data).query.results.channel.item.forecast[1].text}\nHigh: ${JSON.parse(data).query.results.channel.item.forecast[1].high}\xB0F\nLow: ${JSON.parse(data).query.results.channel.item.forecast[1].low}\xB0F`);
             message.channel.send(embed);
         });
     })
