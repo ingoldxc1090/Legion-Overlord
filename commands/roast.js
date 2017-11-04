@@ -1,7 +1,7 @@
 const permissionLevel = require('../subfunctions/permissionLevel.js');
 const Discord = require("discord.js");
 const config = require('../config.json');
-exports.run = (client, message, args, config) => {
+exports.run = (client, message, args, config) => { //Sends command info for help argument
     if(args[0] === "help") {
         const help = new Discord.RichEmbed()
             .setTitle("Roast")
