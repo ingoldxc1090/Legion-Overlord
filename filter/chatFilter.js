@@ -35,7 +35,7 @@ exports.run = (client, message) =>
                         } catch (err) {
                             console.error(err);
                         }
-                        return;
+                        return true;
                     }
                 }
             }
@@ -63,7 +63,7 @@ exports.run = (client, message) =>
                                 } catch (err) {
                                     console.error(err);
                                 }
-                                return;
+                                return true;
                             }
                         }
                     }
@@ -89,7 +89,7 @@ exports.run = (client, message) =>
                     } catch (err) {
                         console.error(err);
                     }
-                    return;
+                    return true;
                 }
             }
         }
@@ -113,7 +113,7 @@ exports.run = (client, message) =>
                     } catch (err) {
                         console.error(err);
                     }
-                    return;
+                    return true;
                 }
             }
         }
@@ -138,7 +138,7 @@ exports.run = (client, message) =>
                             } catch (err) {
                                 console.error(err);
                             }
-                            return;
+                            return true;
                         }
                     }
                 }

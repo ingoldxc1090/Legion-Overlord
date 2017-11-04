@@ -1,6 +1,5 @@
+const https = require('https');
 exports.run = (client, message, args) => {
-    const https = require('https');
-
     https.get('https://api.icndb.com/jokes/random', (resp) => {
       let data = '';
 
