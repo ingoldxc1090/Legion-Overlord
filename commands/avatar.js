@@ -11,14 +11,16 @@ exports.run = (client, message, args) =>
         message.channel.send(help);
         return;
     }
-    if (args.length < 1) {
-        message.channel.send(message.author.avatarURL);
+    if (args.length < 1) { //If no argument passed
+        const embed = new Discord.RichEmbed().setImage(message.author.avatarURL); //Sets the image of an embed to the author's avatar
+        message.channel.send(embed); 
     } else {
-        let member = message.mentions.members.first();
-        if (member == null) {
+        let user = message.mentions.users.first(); //Records the first mention
+        if (member == null) { //Ensures that a user is mentioned in the message
             message.channel.send("You must mention a user.")
         } else {
-            message.channel.send(member.user.avatarURL);
+            const embed = new Discord.RichEmbed().setImage(user.avatarURL); //Sets the image of an embed to the author's avatar
+            message.channel.send(embed);
         }
     }
 }
