@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const config = require('../config.json');
 exports.run = (client, message, args) => {
     if(args[0] === "help") { //Sends command info for help argument
         const help = new Discord.RichEmbed()
