@@ -34,18 +34,18 @@ exports.run = (client, message, args, config) => {
         "Your birth certificate is an apology from the condom factory.",
         "Some babies were dropped on their heads but you were clearly thrown at a wall."];
     var i = Math.floor(Math.random() * roastArray.length);
-    if (args < 1) {
+    if (args < 1) { //If no arguments sends a random roast
         message.channel.send(roastArray[i]);
-    } else if (args[0] === 'me') {
+    } else if (args[0] === 'me') { //If argument "me" replies to the sender
         message.reply(roastArray[i]);
-    } else if (args[0] === 'add') {
+    } else if (message.mentions.users.first() !== null) { //If user is mentioned mentions a the user in the reply
+        let member = message.mentions.users.first();
+        message.channel.send(member + " " + roastArray[i]);
+    } else if (args[0] === 'add') { //If add argument adds the specified roast to the end of the array
         if(permissionLevel.run(client, message, 3)) {
             roastArray[roastArray.length] = args.shift().join(' ');
         }
-    } else if (message.mentions.users.first() !== null) {
-        let member = message.mentions.users.first();
-        message.channel.send(member + " " + roastArray[i]);
-    } else if (args[0] === 'remove') {
+    } else if (args[0] === 'remove') { //If remove argument removes the specified roast
         if(permissionLevel.run(client, message, 3)) {
             for (j = 0; j < roastArray.length; j++) {
                 if (roastArray[j].contains(args.shift().join(' '))) {
@@ -56,7 +56,7 @@ exports.run = (client, message, args, config) => {
 
             }
         }
-    } else {
+    } else { //Error for unrecognized argument
         message.channel.send("Unexpected Argument. Acceptable arguments are \"me\", \"@user\", \"add {roast}\", and \"remove {roast}\" or use no argument for an epic roast.")
     }
 }
