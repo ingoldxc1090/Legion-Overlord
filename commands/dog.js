@@ -4,10 +4,10 @@ const https = require('https');
 exports.run = (client, message, args) => {
     if(args[0] === "help") { //Sends command info for help argument
         const help = new Discord.RichEmbed()
-            .setTitle("Avatar")
+            .setTitle("Dog")
             .setColor(0xffdf00)
-            .setDescription("Returns the avatar image of the sender or specified user.")
-            .addField("Usage", `${config.prefix}avatar\n${config.prefix}avatar @user`);
+            .setDescription("Returns a random dog picture.")
+            .addField("Usage", `${config.prefix}dog`);
         message.channel.send(help);
         return;
     }
