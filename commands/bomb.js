@@ -35,17 +35,18 @@ exports.run = (client, message, args) => { //Sends command info for help argumen
         function timer () {
             setTimeout(function () {
                 let data = require('./commandData/bomb.json');
-                if (data.defused) {
+                if (data.defused) { //Checks to see if bomb has been defused
                     message.channel.send(`Bomb successfully defused with ${count} seconds to spare.`);
                     data.defused = false;
                     fs.writeFile("./commandData/bomb.json", JSON.stringify(data), (err) => console.error);
                 } else {
-                    if (count !=0) message.channel.send(`Bomb will explode in ${count}.`);
-                    count--;
+                    if (count !=0) 
+                        message.channel.send(`Bomb will explode in ${count}.`); //Indexes the countdown
+                        count--;
                     if (count >= 0) {
-                        timer();
+                        timer(); //Calls timer function
                     } else {
-                        explode();
+                        explode(); //Detonates the bomb if the countdown reaches 0
                     }
                 }
             }, 1000)
@@ -53,7 +54,7 @@ exports.run = (client, message, args) => { //Sends command info for help argumen
 
         timer();
 
-        //bomb explode function
+        //Bomb explode function
         function explode() {
             var connectedUsers = [];
             var voiceChannels = [];
