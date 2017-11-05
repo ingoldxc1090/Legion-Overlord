@@ -16,7 +16,7 @@ exports.run = (client, message, args) =>
         message.channel.send(embed); 
     } else {
         let user = message.mentions.users.first(); //Records the first mention
-        if (member == null) { //Ensures that a user is mentioned in the message
+        if (user == null) { //Ensures that a user is mentioned in the message
             message.channel.send("You must mention a user.")
         } else {
             const embed = new Discord.RichEmbed().setImage(user.avatarURL); //Sets the image of an embed to the author's avatar

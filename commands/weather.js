@@ -1,4 +1,5 @@
 const https = require('https');
+const config = require('../config.json');
 const Discord = require('discord.js');
 exports.run = (client, message, args) => {
     if(args[0] === "help") { //Sends command info for help argument
