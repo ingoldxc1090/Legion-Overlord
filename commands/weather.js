@@ -7,14 +7,15 @@ exports.run = (client, message, args) => {
             .setTitle("Weather")
             .setColor(0xffdf00)
             .setDescription("Returns the weather for a specified location.")
-            .addField("Usage", `${config.prefix}weather {city_Name} {state}`);
+            .addField("Usage", `${config.prefix}weather {cityName} {state}`);
         message.channel.send(help);
         return;
     }
-    var city = args[0].toLowerCase();
-    var state = args[1].toLowerCase();
+    var state = args[args.length-1].toLowerCase();
+    delete args[args.length-1];
+    var city = args.join('_');
 
-    if(args.length != 2){ //Exception for incorrect arguments 
+    if(args.length < 2){ //Exception for incorrect arguments
         message.channel.send("Enter a city and state separated by a space. Ex. New_York NY");
         return;
     }
