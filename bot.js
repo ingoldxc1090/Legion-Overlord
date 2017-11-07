@@ -13,6 +13,24 @@ client.on("ready", () => {
     console.log("Client started");
 });
 
+client.on("guildMemberAdd", (member) => {
+   try {
+       let userJoinFilter = require(`./filter/userJoinFilter`);
+       userJoinFilter.run(client, member);
+   } catch(err) {
+       console.error(err);
+   }
+});
+
+client.on("guildMemberUpdate", (oldMember, newMember) => {
+   try {
+       let userChangeFilter = require(`./filter/userChangeFilter.js`)
+       userChangeFilter.run(client, oldMember, newMember);
+   }  catch(err) {
+       console.error(err);
+    }
+});
+
 client.on("messageUpdate", (oldMessage, newMessage) => {
     try {
         let chatFilter = require(`./filter/chatFilter.js`);
