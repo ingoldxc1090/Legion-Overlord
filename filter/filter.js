@@ -1,7 +1,7 @@
-exports.run = (client, text, member, type) => {
+exports.run = (client, text) => {
     //Word Filter
     //Permutation list
-    const arrayA = ["a", "@", "e"];
+    const arrayA = ["a", "@"];
     const arrayE = ["e", "3"];
     const arrayF = ["f", "4"];
     const arrayG = ["g", "b", "6", "p", "q", "9", "4"];
@@ -13,29 +13,14 @@ exports.run = (client, text, member, type) => {
     const arrayS = ["s", "$"];
     const arrayT = ["t", "+"];
     const arrayU = ["u", "w", "μ", "v"];
-    const evidence = text;
-    const user = "**" + member.user.id + "*";
-
+    
     //n****r
     for (i = 0; i < arrayI.length; i++) {
         for (j = 0; j < arrayG.length; j++) {
             for (k = 0; k < arrayG.length; k++) {
                 for (l = 0; l < arrayE.length; l++) {
                     var wordyDurd = "n" + arrayI[i] + arrayG[j] + arrayG[k] + arrayE[l] + "r";
-                    if (text.toLowerCase().includes(wordyDurd)) {
-                        message.delete();
-                        console.log("Deleted\n\tOffense Type: n****r\n\tMessage: " + text + "\n\tFrom: " + member.user);
-                        message.channel.send(member.user + " thou shalt not use such vile language!!!");
-                        var reason = "Language";
-                        var args = [user, reason, evidence];
-                        try {
-                            let warn = require(`../commands/warn.js`);
-                            warn.run(client, message, args, true);
-                        } catch (err) {
-                            console.error(err);
-                        }
-                        return true;
-                    }
+                    if (text.toLowerCase().includes(wordyDurd)) return true;
                 }
             }
         }
@@ -50,19 +35,7 @@ exports.run = (client, text, member, type) => {
                         for (n = 0; n < arrayT.length; n++) {
                             var wordyDurd = arrayF[i] + arrayA[j] + arrayG[k] + arrayG[l] + arrayO[m] + arrayT[n];
                             var wordyDurdShort = arrayF[i] + arrayA[j] + arrayG[k];
-                            if (text.toLowerCase().includes(wordyDurd)) {
-                                console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + text + "\n\tFrom: " + member.user);
-                                message.channel.send(member.user + " thou shalt not use such vile language!!!");
-                                var reason = "Language";
-                                var args = [user, reason, evidence];
-                                try {
-                                    let warn = require(`../commands/warn.js`);
-                                    warn.run(client, message, args, true);
-                                } catch (err) {
-                                    console.error(err);
-                                }
-                                return true;
-                            }
+                            if (text.toLowerCase().includes(wordyDurd)) return true;
                         }
                     }
                 }
@@ -75,20 +48,7 @@ exports.run = (client, text, member, type) => {
         for (j = 0; j < arrayA.length; j++) {
             for (k = 0; k < arrayG.length; k++) {
                 var wordyDurd = arrayF[i] + arrayA[j] + arrayG[k];
-                if (text.toLowerCase().includes(wordyDurd) && text.charAt(text.search(wordyDurd) - 1) !== ' ') {
-                    message.delete();
-                    console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + text + "\n\tFrom: " + member.user);
-                    message.channel.send(member.user + " thou shalt not use such vile language!!!");
-                    var reason = "Language";
-                    var args = [user, reason, evidence];
-                    try {
-                        let warn = require(`../commands/warn.js`);
-                        warn.run(client, message, args, true);
-                    } catch (err) {
-                        console.error(err);
-                    }
-                    return true;
-                }
+                if (text.toLowerCase().includes(wordyDurd) && text.charAt(text.search(wordyDurd) - 1) !== ' ') return true;
             }
         }
     }
@@ -99,20 +59,7 @@ exports.run = (client, text, member, type) => {
             for (k = 0; k < arrayS.length; k++) {
                 var wordyDurd = arrayP[i] + "u" + arrayS[j] + arrayS[k] + "y";
                 var wordyDurdShort = arrayP[i] + "u" + arrayS[j] + arrayS[k];
-                if (text.toLowerCase().includes(wordyDurd) || (text.toLowerCase().includes(wordyDurdShort) && text.charAt(text.search(wordyDurdShort) - 1) !== ' ')) {
-                    message.delete();
-                    console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + text + "\n\tFrom: " + member.user);
-                    message.channel.send(member.user + " thou shalt not use such vile language!!!");
-                    var reason = "Language";
-                    var args = [user, reason, evidence];
-                    try {
-                        let warn = require(`../commands/warn.js`);
-                        warn.run(client, message, args, true);
-                    } catch (err) {
-                        console.error(err);
-                    }
-                    return true;
-                }
+                if (text.toLowerCase().includes(wordyDurd) || (text.toLowerCase().includes(wordyDurdShort) && text.charAt(text.search(wordyDurdShort) - 1) !== ' ')) return true;
             }
         }
     }
@@ -124,20 +71,7 @@ exports.run = (client, text, member, type) => {
                 for (l = 0; l < arrayE.length; l++) {
                     for (m = 0; m < arrayR.length; m++) {
                         var wordyDurd = arrayQ[i] + arrayU[j] + arrayE[k] + arrayE[l] + arrayR[m];
-                        if (text.toLowerCase().includes(wordyDurd) || (text.toLowerCase().includes(wordyDurdShort) && text.charAt(text.search(wordyDurdShort) - 1) !== ' ')) {
-                            message.delete();
-                            console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + text + "\n\tFrom: " + member.user);
-                            message.channel.send(member.user + " thou shalt not use such vile language!!!");
-                            var reason = "Language";
-                            var args = [user, reason, evidence];
-                            try {
-                                let warn = require(`../commands/warn.js`);
-                                warn.run(client, message, args, true);
-                            } catch (err) {
-                                console.error(err);
-                            }
-                            return true;
-                        }
+                        if (text.toLowerCase().includes(wordyDurd) || (text.toLowerCase().includes(wordyDurdShort) && text.charAt(text.search(wordyDurdShort) - 1) !== ' ')) return true;
                     }
                 }
             }
