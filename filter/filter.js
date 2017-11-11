@@ -1,5 +1,6 @@
 exports.run = (client, text) => {
-    //Word Filter
+    
+    if(text.includes('http')) return false;
     //Permutation list
     const arrayA = ["a", "@"];
     const arrayE = ["e", "3"];
