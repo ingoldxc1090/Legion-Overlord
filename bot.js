@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs");
 
-client.on("ready", () => {
+client.on("ready", () => { //Actions for when bot becomes ready
     try {
         let status = require('./subfunctions/status.js');
         status.run(client);
@@ -13,34 +13,43 @@ client.on("ready", () => {
     console.log("Client started");
 });
 
-client.on("guildMemberAdd", (member) => {
+/* client.on("guildMemberAdd", (member) => { //Actions for members joining
    try {
-       let userJoinFilter = require(`./filter/userJoinFilter`);
-       userJoinFilter.run(client, member);
+       let filter = require(`./filter/filter.js`);
+       if(filter.run(client, member.nickname)) {
+           let joinFilter = require(`./filter/joinFilter.js`);
+	   joinFilter.run(client, member);
+       }
    } catch(err) {
        console.error(err);
    }
-});
+});*/
 
-client.on("guildMemberUpdate", (oldMember, newMember) => {
+client.on("guildMemberUpdate", (oldMember, newMember) => { //Actions for user info updated
    try {
        let filter = require(`./filter/userChangeFilter.js`)
-       filter.run(client, newMember.nickname, newMember, 'memberChange');
+       if(filter.run(client, newMember.nickname)){
+           let updateFilter = require(`./filter/updateFilter.js`);
+	   updatefilter.run(client, oldMember, newMember);
+       }
    }  catch(err) {
        console.error(err);
     }
 });
 
-client.on("messageUpdate", (oldMessage, newMessage) => {
+client.on("messageUpdate", (oldMessage, newMessage) => { //Actions for message content updated
     try {
         let filter = require(`./filter/filter.js`);
-        filter.run(client, newMessage.content, newMessage.member, 'chat');
+        if(filter.run(client, newMessage.content)) {
+	    let chatFilter = require(`./filter/chatFilter.js`);
+	    chatFilter.run(client, newMessage);
+	}
     } catch (err) {
         console.error(err);
     }
 });
 
-client.on("message", (message) => {
+client.on("message", (message) => { //Action for message sent
 if (message.author.bot) {
 		return;
 	} 
@@ -53,7 +62,11 @@ if (message.author.bot) {
     //Chat Filter
     try {
         let filter = require(`./filter/filter.js`);
-        if(filter.run(client, message.content, message.member, 'chat')) return;
+        if(filter.run(client, message.content, message.member, 'chat')) {
+	    let chatFilter = require(`./filter/chatFilter.js`);
+	    chatFilter.run(client, message);
+	    return;
+	}
     } catch (err) {
         console.error(err);
     }
