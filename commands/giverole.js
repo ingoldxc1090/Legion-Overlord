@@ -5,8 +5,8 @@ exports.run = (client, message, args) => {
         const help = new Discord.RichEmbed()
             .setTitle("Give Role")
             .setColor(0xffdf00)
-            .setDescription("Gives a specified role to the user")
-            .addField("Usage", `${config.prefix}giverole {roleName}`);
+            .setDescription("Gives a specified role to the sender or a specified user")
+            .addField("Usage", `${config.prefix}giverole {roleName}\n${config.prefix}giverole @user {roleName}`);
         message.channel.send(help);
         return;
     }
