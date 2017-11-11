@@ -63,7 +63,7 @@ exports.run = (client, message, args, filter) => {
                 punishment.warnCount[i]++;
                 if(punishment.warnCount[i] >= 3) {
                     let mute = require('./mute.js');
-                    mute.run(client, message, args, config, filter);
+                    mute.run(client, message, args, filter);
                     punishment.warnCount[i] = 0;
                     fs.writeFile("./commandData/bomb.json", JSON.stringify(punishment), (err) => console.error);
                     return;
