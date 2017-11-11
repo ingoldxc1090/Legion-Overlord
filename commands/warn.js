@@ -4,7 +4,7 @@ const punishment = require('./commandData/punishment.json');
 const permissionLevel = require('../subfunctions/permissionLevel.js');
 const checkRoles = require('../subfunctions/checkRoles.js');
 const config = require('../config.json');
-exports.run = (client, message, args, chatFilter) => {
+exports.run = (client, message, args, filter) => {
     if(args[0] === "help") {
         const help = new Discord.RichEmbed()
             .setTitle("Warn")
@@ -17,8 +17,8 @@ exports.run = (client, message, args, chatFilter) => {
 
     var userRole = message.member.highestRole;
     var subjectRole = message.mentions.members.first().highestRole;
-    if(chatFilter == undefined) chatfilter = false;
-    if(chatFilter || (permissionLevel.run(client, message, 2) && checkRoles.run(client, userRole, subjectRole))) {
+    if(filter == undefined) filter = false;
+    if(filter || (permissionLevel.run(client, message, 2) && checkRoles.run(client, userRole, subjectRole))) {
         var serverMembers = message.guild.members.array();
         if(args[0] == undefined) {
             message.channel.send("You must mention a user.")
