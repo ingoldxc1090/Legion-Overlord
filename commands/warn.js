@@ -14,29 +14,37 @@ exports.run = (client, message, args, filter) => {
         message.channel.send(help);
         return;
     }
-
-    var userRole = message.member.highestRole;
-    var subjectRole = message.mentions.members.first().highestRole;
-    if(filter == undefined) filter = false;
+    if(filter == undefined) {
+        filter = false;
+        var userRole = message.member.highestRole;
+        var subjectRole = message.mentions.members.first().highestRole;
+    }
     if(filter || (permissionLevel.run(client, message, 2) && checkRoles.run(client, userRole, subjectRole))) {
-        var serverMembers = message.guild.members.array();
-        if(args[0] == undefined) {
+        if(filter){
+            var user = args[0].user;
+            const moderationLog = args[0].guild.channels.find('name', 'moderation_log');
+        } else {
+            var serverMembers = message.guild.members.array();
+            if(args[0] == undefined) {
             message.channel.send("You must mention a user.")
             return;
-        }
-        var user;
-        for(i = 0; i < serverMembers.length; i++) {
-            if(serverMembers[i].user.id === args[0].substr(2).slice(0,-1)) {
-                user = serverMembers[i].user;
             }
-        }
-        if(user == undefined) {
-            user = message.mentions.users.first();
+            var user;
+            for(i = 0; i < serverMembers.length; i++) {
+                if(serverMembers[i].user.id === args[0].substr(2).slice(0,-1)) {
+                    user = serverMembers[i].user;
+                }
+            }
             if(user == undefined) {
-                message.channel.send("You must mention a user.")
-                return;
+                user = message.mentions.users.first();
+                if(user == undefined) {
+                    message.channel.send("You must mention a user.")
+                    return;
+                }
             }
+            const moderationLog = message.guild.channels.find('name', 'moderation_log');
         }
+        
         var reason = args[1];
         var arguments = args;
         delete arguments[0];
@@ -50,13 +58,12 @@ exports.run = (client, message, args, filter) => {
             message.channel.send("You must provide evidence for your warning.")
             return;
         }
-        const moderationLog = message.guild.channels.find('name', 'moderation_log');
         for(i = 0; i < punishment.offenders.length; i++) {
             if(user.id == punishment.offenders[i]) {
                 punishment.warnCount[i]++;
                 if(punishment.warnCount[i] >= 3) {
                     let mute = require('./mute.js');
-                    mute.run(client, message, args, config, chatFilter);
+                    mute.run(client, message, args, config, filter);
                     punishment.warnCount[i] = 0;
                     fs.writeFile("./commandData/bomb.json", JSON.stringify(punishment), (err) => console.error);
                     return;
