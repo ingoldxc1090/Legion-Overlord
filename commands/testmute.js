@@ -3,7 +3,9 @@ const data = require('./commandData/testmute.json');
 const permissionLevel = require('../subfunctions/permissionLevel.js');
 const checkRoles = require('../subfunctions/checkRoles.js');
 exports.run = (client, message, args) => {
-    if(!permissionLevel.run(client, message, 3) && !checkRoles.run(client, message)) return;
+    var userRole = message.member.highestRole;
+    var subjectRole = message.mentions.members.first().highestRole;
+    if(!permissionLevel.run(client, message, 3) && !checkRoles.run(client, userRole, subjectRole)) return;
     var channels = message.guild.channels.array();
     var userPermissions = message.mentions.members.first().permissions.bitfield;
     for(i = 0; i < data.mutedUsers; i++) {

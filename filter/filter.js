@@ -1,5 +1,4 @@
-exports.run = (client, message) =>
-{
+exports.run = (client, text, member, type) => {
     //Word Filter
     //Permutation list
     const arrayA = ["a", "@", "e"];
@@ -14,8 +13,8 @@ exports.run = (client, message) =>
     const arrayS = ["s", "$"];
     const arrayT = ["t", "+"];
     const arrayU = ["u", "w", "μ", "v"];
-    const evidence = message.content;
-    const user = "**" + message.author.id + "*";
+    const evidence = text;
+    const user = "**" + member.user.id + "*";
 
     //n****r
     for (i = 0; i < arrayI.length; i++) {
@@ -23,10 +22,10 @@ exports.run = (client, message) =>
             for (k = 0; k < arrayG.length; k++) {
                 for (l = 0; l < arrayE.length; l++) {
                     var wordyDurd = "n" + arrayI[i] + arrayG[j] + arrayG[k] + arrayE[l] + "r";
-                    if (message.content.toLowerCase().includes(wordyDurd)) {
+                    if (text.toLowerCase().includes(wordyDurd)) {
                         message.delete();
-                        console.log("Deleted\n\tOffense Type: n****r\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
-                        message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                        console.log("Deleted\n\tOffense Type: n****r\n\tMessage: " + text + "\n\tFrom: " + member.user);
+                        message.channel.send(member.user + " thou shalt not use such vile language!!!");
                         var reason = "Language";
                         var args = [user, reason, evidence];
                         try {
@@ -51,10 +50,9 @@ exports.run = (client, message) =>
                         for (n = 0; n < arrayT.length; n++) {
                             var wordyDurd = arrayF[i] + arrayA[j] + arrayG[k] + arrayG[l] + arrayO[m] + arrayT[n];
                             var wordyDurdShort = arrayF[i] + arrayA[j] + arrayG[k];
-                            if (message.content.toLowerCase().includes(wordyDurd)) {
-                                message.delete();
-                                console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
-                                message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                            if (text.toLowerCase().includes(wordyDurd)) {
+                                console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + text + "\n\tFrom: " + member.user);
+                                message.channel.send(member.user + " thou shalt not use such vile language!!!");
                                 var reason = "Language";
                                 var args = [user, reason, evidence];
                                 try {
@@ -77,10 +75,10 @@ exports.run = (client, message) =>
         for (j = 0; j < arrayA.length; j++) {
             for (k = 0; k < arrayG.length; k++) {
                 var wordyDurd = arrayF[i] + arrayA[j] + arrayG[k];
-                if (message.content.toLowerCase().includes(wordyDurd) && message.content.charAt(message.content.search(wordyDurd) - 1) !== ' ') {
+                if (text.toLowerCase().includes(wordyDurd) && text.charAt(text.search(wordyDurd) - 1) !== ' ') {
                     message.delete();
-                    console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
-                    message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                    console.log("Deleted\n\tOffense Type: f****t\n\tMessage: " + text + "\n\tFrom: " + member.user);
+                    message.channel.send(member.user + " thou shalt not use such vile language!!!");
                     var reason = "Language";
                     var args = [user, reason, evidence];
                     try {
@@ -101,10 +99,10 @@ exports.run = (client, message) =>
             for (k = 0; k < arrayS.length; k++) {
                 var wordyDurd = arrayP[i] + "u" + arrayS[j] + arrayS[k] + "y";
                 var wordyDurdShort = arrayP[i] + "u" + arrayS[j] + arrayS[k];
-                if (message.content.toLowerCase().includes(wordyDurd) || (message.content.toLowerCase().includes(wordyDurdShort) && message.content.charAt(message.content.search(wordyDurdShort) - 1) !== ' ')) {
+                if (text.toLowerCase().includes(wordyDurd) || (text.toLowerCase().includes(wordyDurdShort) && text.charAt(text.search(wordyDurdShort) - 1) !== ' ')) {
                     message.delete();
-                    console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
-                    message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                    console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + text + "\n\tFrom: " + member.user);
+                    message.channel.send(member.user + " thou shalt not use such vile language!!!");
                     var reason = "Language";
                     var args = [user, reason, evidence];
                     try {
@@ -126,10 +124,10 @@ exports.run = (client, message) =>
                 for (l = 0; l < arrayE.length; l++) {
                     for (m = 0; m < arrayR.length; m++) {
                         var wordyDurd = arrayQ[i] + arrayU[j] + arrayE[k] + arrayE[l] + arrayR[m];
-                        if (message.content.toLowerCase().includes(wordyDurd) || (message.content.toLowerCase().includes(wordyDurdShort) && message.content.charAt(message.content.search(wordyDurdShort) - 1) !== ' ')) {
+                        if (text.toLowerCase().includes(wordyDurd) || (text.toLowerCase().includes(wordyDurdShort) && text.charAt(text.search(wordyDurdShort) - 1) !== ' ')) {
                             message.delete();
-                            console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + message.content + "\n\tFrom: " + message.author);
-                            message.channel.send(message.author + " thou shalt not use such vile language!!!");
+                            console.log("Deleted\n\tOffense Type: p***y\n\tMessage: " + text + "\n\tFrom: " + member.user);
+                            message.channel.send(member.user + " thou shalt not use such vile language!!!");
                             var reason = "Language";
                             var args = [user, reason, evidence];
                             try {

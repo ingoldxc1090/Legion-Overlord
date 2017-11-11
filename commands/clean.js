@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
     var num = args[0];
     num++;
     if(num > 100){ //Handling for entries over 100
-        mesage.channel.bulkDelete(100);
+        message.channel.bulkDelete(100);
         return;
     }
     message.channel.bulkDelete(num); //Deletes the specified number of messages

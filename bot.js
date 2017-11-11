@@ -24,8 +24,8 @@ client.on("guildMemberAdd", (member) => {
 
 client.on("guildMemberUpdate", (oldMember, newMember) => {
    try {
-       let userChangeFilter = require(`./filter/userChangeFilter.js`)
-       userChangeFilter.run(client, oldMember, newMember);
+       let filter = require(`./filter/userChangeFilter.js`)
+       filter.run(client, newMember.nickname, newMember, 'memberChange');
    }  catch(err) {
        console.error(err);
     }
@@ -33,8 +33,8 @@ client.on("guildMemberUpdate", (oldMember, newMember) => {
 
 client.on("messageUpdate", (oldMessage, newMessage) => {
     try {
-        let chatFilter = require(`./filter/chatFilter.js`);
-        chatFilter.run(client, newMessage);
+        let filter = require(`./filter/filter.js`);
+        filter.run(client, newMessage.content, newMessage.member, 'chat');
     } catch (err) {
         console.error(err);
     }
@@ -52,8 +52,8 @@ if (message.author.bot) {
 
     //Chat Filter
     try {
-        let chatFilter = require(`./filter/chatFilter.js`);
-        if(chatFilter.run(client, message)) return;
+        let filter = require(`./filter/filter.js`);
+        if(filter.run(client, message.content, message.member, 'chat')) return;
     } catch (err) {
         console.error(err);
     }

@@ -1,0 +1,4 @@
+@ECHO OFF
+NODE bot.js
+CLS
+EXIT

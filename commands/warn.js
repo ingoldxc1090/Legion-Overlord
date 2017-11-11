@@ -14,8 +14,11 @@ exports.run = (client, message, args, chatFilter) => {
         message.channel.send(help);
         return;
     }
+
+    var userRole = message.member.highestRole;
+    var subjectRole = message.mentions.members.first().highestRole;
     if(chatFilter == undefined) chatfilter = false;
-    if(chatFilter || (permissionLevel.run(client, message, 2) && checkRoles.run(client, message))) {
+    if(chatFilter || (permissionLevel.run(client, message, 2) && checkRoles.run(client, userRole, subjectRole))) {
         var serverMembers = message.guild.members.array();
         if(args[0] == undefined) {
             message.channel.send("You must mention a user.")
