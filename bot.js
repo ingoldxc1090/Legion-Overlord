@@ -27,10 +27,10 @@ client.on("ready", () => { //Actions for when bot becomes ready
 
 client.on("guildMemberUpdate", (oldMember, newMember) => { //Actions for user info updated
    try {
-       let filter = require(`./filter/userChangeFilter.js`)
+       let filter = require(`./filter/filter.js`);
        if(filter.run(client, newMember.nickname)){
            let updateFilter = require(`./filter/updateFilter.js`);
-	   updatefilter.run(client, oldMember, newMember);
+           updateFilter.run(client, oldMember, newMember);
        }
    }  catch(err) {
        console.error(err);
@@ -41,9 +41,9 @@ client.on("messageUpdate", (oldMessage, newMessage) => { //Actions for message c
     try {
         let filter = require(`./filter/filter.js`);
         if(filter.run(client, newMessage.content)) {
-	    let chatFilter = require(`./filter/chatFilter.js`);
-	    chatFilter.run(client, newMessage);
-	}
+	        let chatFilter = require(`./filter/chatFilter.js`);
+	        chatFilter.run(client, newMessage);
+	    }
     } catch (err) {
         console.error(err);
     }
