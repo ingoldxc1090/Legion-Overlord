@@ -1,7 +1,5 @@
 const https = require('https');
 exports.run = (client, message, args) => {
-    message.channel.send("This command is currently in development.");
-    return;
     var target = args[0];
     var q = args.join(' ');
     const options = {
@@ -14,7 +12,7 @@ exports.run = (client, message, args) => {
         }
     };
 
-    https.request(options, (resp) => {
+    const req = https.request(options, (resp) => {
         let data = '';
 
     resp.on('data', (chunk) => {
@@ -25,7 +23,9 @@ exports.run = (client, message, args) => {
         console.log(data);
 });
 
-}).on("error", (err) => {
+});
+req.on("error", (err) => {
         console.error(err);
 });
+req.end();
 }

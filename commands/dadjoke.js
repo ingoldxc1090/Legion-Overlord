@@ -8,8 +8,6 @@ if(args[0] === "help") { //Sends command info for help argument
         message.channel.send(help);
         return;
     }
-    message.channel.send("This command is currently in development.");
-    return;
     const https = require('https');
 
     const options = { //Sets request options
@@ -21,7 +19,7 @@ if(args[0] === "help") { //Sends command info for help argument
         }
     };
 
-    https.request(options, (resp) => { //Makes request to dad joke api
+    const req = https.request(options, (resp) => { //Makes request to dad joke api
         let data = '';
 
     resp.on('data', (chunk) => { //Writes data chunks to variable as they are recieved
@@ -32,7 +30,9 @@ if(args[0] === "help") { //Sends command info for help argument
         message.channel.send(data);
     });
 
-}).on("error", (err) => {
-        console.error(err);
 });
+req.on("error", (err) => {
+    console.error(err);
+});
+req.end();
 }
