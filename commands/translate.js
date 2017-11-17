@@ -1,13 +1,6 @@
 const https = require('https');
+const Discord = require("discord.js");
 exports.run = (client, message, args) => {
-    if(args.length == 1){
-        message.channel.send('You must some enter text to be translated.');
-        return;
-    }
-
-    var lang = args[0];
-    delete args[0];
-    var text = args.join(' ');
 
     const langAr = [
         ['azerbaijan',	'az'], ['malayalam',	'ml'],
@@ -52,11 +45,40 @@ exports.run = (client, message, args) => {
         ['khmer',	    'km'], ['czech',	    'cs'],
         ['laotian',	    'lo'], ['swedish',	    'sv'],
         ['latin',	    'la'], ['scottish',	    'gd'],
-        ['latvian',	    'lv'], ['sstonian',	    'et'],
+        ['latvian',	    'lv'], ['estonian',	    'et'],
         ['lithuanian',	'lt'], ['esperanto',	'eo'],
         ['luxembourgish',	'lb'], ['javanese',	'jv'],
         ['malagasy',	'mg'], ['japanese',     'ja'],
         ['malay',	    'ms']];
+
+    if(args[0].toLowerCase() == 'languages'){
+        var langSend = "";
+        for(i=0; i<langAr.length; i++){
+            langSend += langAr[i][0].charAt(0).toUpperCase();
+            langSend += langAr[i][0].slice(1);
+            if(i%2 == 0) {
+                var spaceLength = 30 - langAr[i][0].length;
+                for(j=0; j<spaceLength; j++) {
+                    langSend += ' ';
+                }
+            }else {
+                langSend += '\n';
+            }
+        }
+        const embed = new Discord.RichEmbed()
+            .setTitle("Available Languages")
+            .setDescription(langSend);
+        message.channel.send(embed);
+        return;
+    }
+    if(args.length == 1){
+        message.channel.send('You must some enter text to be translated.');
+        return;
+    }
+    var lang = args[0];
+    delete args[0];
+    var text = args.join(' ');
+
     var langFound = false;
     for(i = 0; i < langAr.length; i++) {
         if(lang.toLowerCase() === langAr[i][0]){
