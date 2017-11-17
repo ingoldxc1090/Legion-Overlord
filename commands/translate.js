@@ -1,7 +1,15 @@
 const https = require('https');
 const Discord = require("discord.js");
 exports.run = (client, message, args) => {
-
+    if(args[0] === "help") {
+        const help = new Discord.RichEmbed()
+            .setTitle("Translate")
+            .setColor(0xffdf00)
+            .setDescription("Translate message to the specified language.")
+            .addField("Usage", `${config.prefix}translate languages\n${config.prefix}translate {language} {message}`);
+        message.channel.send(help);
+        return;
+    }
     const langAr = [
         ['azerbaijan',	'az'], ['malayalam',	'ml'],
         ['albanian',	'sq'], ['maltese',	    'mt'],
