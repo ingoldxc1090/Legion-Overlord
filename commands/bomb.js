@@ -1,18 +1,18 @@
-const permissionLevel = require('../subfunctions/permissionLevel');
-const fs = require("fs");
-const config = require('../config.json');
-const Discord = require("discord.js");
+const permissionLevel = require ('../subfunctions/permissionLevel');
+const fs = require ("fs");
+const config = require ('../config.json');
+const Discord = require ("discord.js");
 exports.run = (client, message, args) => { //Sends command info for help argument
-    if(args[0] === "help") {
-        const help = new Discord.RichEmbed()
-            .setTitle("Bomb")
-            .setColor(0xffdf00)
-            .setDescription("Places a bomb in the sender's voice channel or in the channel of a specified user. The bomb will detonate scattering users throughout the server")
-            .addField("Usage", `${config.prefix}bomb\n${config.prefix}bomb @user`);
-        message.channel.send(help);
+    if (args[0] === "help") {
+        const help = new Discord.RichEmbed ()
+            .setTitle ("Bomb")
+            .setColor (0xffdf00)
+            .setDescription ("Places a bomb in the sender's voice channel or in the channel of a specified user. The bomb will detonate scattering users throughout the server")
+            .addField  ("Usage", `${config.prefix}bomb\n${config.prefix}bomb @user`);
+        message.channel.send (help);
         return;
     }
-    if(permissionLevel.run(client, message, 3)) {
+    if (permissionLevel.run (client, message, 3) ) {
         var connectedChannel;
         //Checks for arguments and returns errors if you or your target are not connected to a voice channel
         if (args.length < 1) {
@@ -33,12 +33,12 @@ exports.run = (client, message, args) => { //Sends command info for help argumen
         //bomb timer function - effectively a loop that waits one second before each execution
         var count = 5;
         function timer () {
-            setTimeout(function () {
+            setTimeout (function () {
                 let data = require('./commandData/bomb.json');
                 if (data.defused) { //Checks to see if bomb has been defused
                     message.channel.send(`Bomb successfully defused with ${count} seconds to spare.`);
                     data.defused = false;
-                    fs.writeFile("./commandData/bomb.json", JSON.stringify(data), (err) => console.error);
+                    fs.writeFile("./commandData/bomb.json", JSON.stringify (data), (err) => console.error);
                 } else {
                     if (count !=0) 
                         message.channel.send(`Bomb will explode in ${count}.`); //Indexes the countdown
@@ -55,7 +55,7 @@ exports.run = (client, message, args) => { //Sends command info for help argumen
         timer();
 
         //Bomb explode function
-        function explode() {
+        function explode () {
             var connectedUsers = [];
             var voiceChannels = [];
             var arrayChannels = message.guild.channels.array();
