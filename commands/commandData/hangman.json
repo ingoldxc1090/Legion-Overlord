@@ -1,0 +1,7 @@
+{
+  "words" : ["test"],
+  "users" : ["test"],
+  "currentGuesses" : [["a"]],
+  "remainingGuesses" : ["6"],
+  "underscores" : ["_"]
+}

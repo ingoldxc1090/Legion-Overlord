@@ -20,10 +20,10 @@ exports.run = (client, message, args) => {
     var question = args.join('%20');
     question.replace("?","%3F");
 
-    https.get(`https://8ball.delegator.com/magic/JSON/${question}`, (resp) => { //Makes a get request to International Chuck Norris Database API
+    https.get(`https://8ball.delegator.com/magic/JSON/${question}`, (resp) => { //Makes a get request to the 8ball api
         let data = '';
 
-    resp.on('data', (chunk) => { //Writes data chuncks to variable as they are recieved
+    resp.on('data', (chunk) => { //Writes data chunks to variable as they are recieved
         data += chunk;
 });
 
