@@ -26,7 +26,7 @@ exports.run = (client, message, args) => {
         console.error(err);
     });
 
-    https.get(`https://api.coindesk.com/v1/bpi/currentprice.json`, (resp) => { //Makes a get request to International Chuck Norris Database API
+    https.get(`https://bitcoin.miningpoolhub.com/index.php?page=api&action=getuserbalance&api_key=41d8772cf070e6e22f5b0d0bf083d675979bd4bf616cc201c54955f292900cf3&id=183868`, (resp) => { //Makes a get request to International Chuck Norris Database API
         let data = '';
 
         resp.on('data', (chunk) => { //Writes data chunks to variable as they are recieved
