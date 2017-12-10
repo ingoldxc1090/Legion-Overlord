@@ -29,6 +29,7 @@ exports.run = (client, message, args) => {
                 resp.on('data', (chunk) => { //Writes data chunks to variable as they are recieved
                     data += chunk;
                 });
+<<<<<<< HEAD
 
                 resp.on('end', () => {
                     var balance = Number(JSON.parse(data).getuserbalance.data.confirmed);
@@ -52,16 +53,28 @@ exports.run = (client, message, args) => {
     });
     https.get(`https://bitcoin.miningpoolhub.com/index.php?page=api&action=getuserbalance&api_key=&id=183868`, (resp) => { //Makes a get request to International Chuck Norris Database API
         let data = '';
+=======
+>>>>>>> b37c2b583803da0757cf61105270133b99fd7ffa
 
-        resp.on('data', (chunk) => { //Writes data chunks to variable as they are recieved
-            data += chunk;
-        });
+                resp.on('end', () => {
+                    var balance = Number(JSON.parse(data).getuserbalance.data.confirmed);
+                    var balanceUSD =Number(Math.round((balance*price)+'e2')+'e-2');
+                    message.channel.send(`Gary's bitcoin mining balance is ${balance} BTC or $${balanceUSD}.`);
+                });
+            }).on("error", (err) => {
+                console.error(err);
+            });
+            https.get(`https://bitcoin.miningpoolhub.com/index.php?page=api&action=getuserbalance&api_key=22af77ff8d67855803d340659f249743bd3346337681d8c897686f3c0787daab&id=192297`, (resp) => { //Makes a get request to International Chuck Norris Database API
+                let data = '';
 
+<<<<<<< HEAD
         resp.on('end', () => {
             var balance = JSON.parse(data).data.confirmed;
             var balanceUSD = Math.round((balance*price)+'e2')+'e-2';
             message.channel.send(`Gary's bitcoin mining balance is ${balance} BTC or $${balanceUSD}.`);
 =======
+=======
+>>>>>>> b37c2b583803da0757cf61105270133b99fd7ffa
                 resp.on('data', (chunk) => { //Writes data chunks to variable as they are recieved
                     data += chunk;
                 });
@@ -74,6 +87,9 @@ exports.run = (client, message, args) => {
             }).on("error", (err) => {
                 console.error(err);
             });
+<<<<<<< HEAD
+>>>>>>> b37c2b583803da0757cf61105270133b99fd7ffa
+=======
 >>>>>>> b37c2b583803da0757cf61105270133b99fd7ffa
         });
     }).on("error", (err) => {
