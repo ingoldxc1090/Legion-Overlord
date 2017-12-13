@@ -32,7 +32,6 @@ exports.run = (client, message, args) => {
 });
     resp.on('end', () => {
         var balance = Number(JSON.parse(data).getuserbalance.data.confirmed);
-        console.log(balance);
     var balanceUSD = Math.round((balance * price) + 'e2') + 'e-2';
     message.channel.send(`Cam's bitcoin mining balance is ${balance} BTC or $${balanceUSD}.`);
 });
